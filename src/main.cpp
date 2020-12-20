@@ -1,9 +1,14 @@
 #include <Arduino.h>
+#include <AkiEthernet.h>
 
-void setup() {
-  // put your setup code here, to run once:
+void setup(void) {
+    Serial.begin(9600);
+    pinMode(13, OUTPUT);
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
+void loop(void) {
+    digitalWrite(13,HIGH);
+    delay(100);
+    digitalWrite(13,LOW);
+    delay(100);
 }
