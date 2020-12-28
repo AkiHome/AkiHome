@@ -1,14 +1,18 @@
 #include <Arduino.h>
 #include <AkiEthernet.h>
+#include <AkiConfigurator.h>
 
-void setup(void) {
+void setup(void)
+{
     Serial.begin(9600);
-    pinMode(13, OUTPUT);
+    pinMode(2, INPUT_PULLUP);
+    bool wipe = !digitalRead(2);
+    AkiCfg.begin(wipe);
+    AkiNet.begin(wipe);
 }
 
-void loop(void) {
-    digitalWrite(13,HIGH);
-    delay(100);
-    digitalWrite(13,LOW);
-    delay(100);
+void loop(void)
+{
+    AkiCfg.loop();
+    AkiNet.loop();
 }
